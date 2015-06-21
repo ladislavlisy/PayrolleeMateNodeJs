@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "karma.conf.js",
+  "sourceRoot": "",
+  "sources": [
+    "karma.conf.coffee"
+  ],
+  "names": [],
+  "mappings": ";AACA;EAAA,MAAM,CAAC,OAAP,GAAiB,SAAC,MAAD;WACf,MAAM,CAAC,GAAP,CACE;MAAA,QAAA,EAAU,OAAV;MACA,UAAA,EAAY,CAAC,OAAD,CADZ;KADF;EADe;AAAjB"
+}

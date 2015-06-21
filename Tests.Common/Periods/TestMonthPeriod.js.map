@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "TestMonthPeriod.js",
+  "sourceRoot": "",
+  "sources": [
+    "TestMonthPeriod.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA;;EAAA,MAAA,GAAS,OAAA,CAAQ,QAAR;;EAET,QAAA,CAAS,cAAT,EAAyB,SAAA;WACvB,EAAA,CAAG,mBAAH,EAAwB,SAAA;aACtB,KAAK,CAAC,MAAM,CAAC,KAAb,CAAmB,IAAnB;IADsB,CAAxB;EADuB,CAAzB;AAFA"
+}
