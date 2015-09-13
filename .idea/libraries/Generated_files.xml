@@ -5,12 +5,14 @@
         <item url="file://$PROJECT_DIR$/karma.conf.js" />
         <item url="file://$PROJECT_DIR$/Tests.Common/Periods/TestSpanOfYears.js" />
         <item url="file://$PROJECT_DIR$/Tests.Common/Periods/TestMonthPeriod.js" />
+        <item url="file://$PROJECT_DIR$/PayrolleeMate.Common/Periods/MonthPeriod.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/karma.conf.js" />
       <root url="file://$PROJECT_DIR$/Tests.Common/Periods/TestSpanOfYears.js" />
       <root url="file://$PROJECT_DIR$/Tests.Common/Periods/TestMonthPeriod.js" />
+      <root url="file://$PROJECT_DIR$/PayrolleeMate.Common/Periods/MonthPeriod.js" />
     </CLASSES>
     <SOURCES />
   </library>
