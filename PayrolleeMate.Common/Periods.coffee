@@ -188,13 +188,15 @@ class SeqOfYears
     new SpanOfYears(yearFrom, spanUpto)
 
   constructor: (years) ->
-    zip = (xss, yss) -> xss.map (_, i) -> [xss[i], yss[i]]
+    zip = (xss, yss) ->
+      xss.map (_, i) -> [xss[i], yss[i]]
+
     sortedYears = years.slice(0)
     sortedYears.sort(SeqOfYears.transformZeroYear)
     beginsYears = sortedYears.filter((x) -> x != 0)
     finishYears = sortedYears[1..sortedYears.length]
     sortedZiped = zip(beginsYears, finishYears)
-    this.milestones = sortedZiped.map((x) => SeqOfYears.transformYearsToSpans(x[0], x[1]));
+    this.milestones = sortedZiped.map((x) -> SeqOfYears.transformYearsToSpans(x[0], x[1]));
 
   yearsIntervalForPeriod: (period) ->
     selectForPeriod = (span, period) ->
