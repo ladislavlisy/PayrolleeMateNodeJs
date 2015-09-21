@@ -109,7 +109,7 @@ class SpanOfMonths
     @periodUpto
 
   compareToInterval: (other) ->
-    if (@periodFrom == other.periodFrom) then @periodUpto.compareToPeriod(other.periodUpto)
+    if (@periodFrom.isEqualToPeriod(other.periodFrom)) then @periodUpto.compareToPeriod(other.periodUpto)
     else @periodFrom.compareToPeriod(other.periodUpto)
 
   isEqualToInterval: (other) ->
@@ -135,6 +135,9 @@ class SpanOfYears
 
   @CreateFromYearToYear: (from, upto) ->
     new SpanOfYears(from, upto)
+
+  @Empty: ->
+    new SpanOfYears(0, 0)
 
   constructor: (from, upto) ->
     @yearFrom = from
@@ -171,56 +174,36 @@ class SeqOfYears
   @END_YEAR_ARRAY = 2100
   @END_YEAR_INTER = 2099
 
+  @transformZeroToUpto: (year) ->
+    if year == 0 then SeqOfYears.END_YEAR_ARRAY else year
+
   @transformZeroYear: (year1, year2) ->
-    compYear1 = if year1 == 0 then SeqOfYears.END_YEAR_ARRAY else year1
-    compYear2 = if year2 == 0 then SeqOfYears.END_YEAR_ARRAY else year2
+    compYear1 = SeqOfYears.transformZeroToUpto year1
+    compYear2 = SeqOfYears.transformZeroToUpto year2
     (compYear1 - compYear2)
 
+  @transformYearsToSpans: (yearFrom, yearUpto) ->
+    tranUpto = SeqOfYears.transformZeroToUpto(yearUpto)
+    spanUpto = if tranUpto == yearFrom then tranUpto else (tranUpto - 1)
+    new SpanOfYears(yearFrom, spanUpto)
+
   constructor: (years) ->
-    @milestones = years.slice(0)
-    @milestones.sort(SeqOfYears.transformZeroYear)
+    zip = (xss, yss) -> xss.map (_, i) -> [xss[i], yss[i]]
+    sortedYears = years.slice(0)
+    sortedYears.sort(SeqOfYears.transformZeroYear)
+    beginsYears = sortedYears.filter((x) -> x != 0)
+    finishYears = sortedYears[1..sortedYears.length]
+    sortedZiped = zip(beginsYears, finishYears)
+    this.milestones = sortedZiped.map((x) => SeqOfYears.transformYearsToSpans(x[0], x[1]));
 
   yearsIntervalForPeriod: (period) ->
-    forPeriodAccumulator = (agr, year) ->
-      intYear = if (year==0) then SeqOfYears.END_YEAR_ARRAY else year
-      intFrom = if (period.Year() >= intYear) then intYear else agr.YearFrom()
-      intUpto = if (period.Year() < intYear && agr.YearUpto() == 0) then (intYear-1) else agr.YearUpto()
+    selectForPeriod = (span, period) ->
+      period.Year() >= span.YearFrom() && period.Year() <= span.YearUpto()
 
-      new SpanOfYears(intFrom, intUpto)
+    validSpan = this.milestones.filter((x) -> selectForPeriod(x, period))
+    validSpan[0] ?= SpanOfYears.Empty()
 
-    initsSpan = SpanOfYears.CreateFromYear(0);
-    validSpan = this.milestones.reduce(forPeriodAccumulator, initsSpan)
-
-  toYearsIntervalList: ->
-    nextListEnd = (from, year) ->
-      if (year == 0)
-        upto = SeqOfYears.END_YEAR_INTER
-        [new SpanOfYears(from, upto)]
-      else
-        upto = Math.max(year - 1, from)
-        [new SpanOfYears(from, upto), new SpanOfYears(year, 0)]
-
-    makeListEnd = (preparedList) ->
-      [..., lastHistoryPart] = preparedList
-      if (lastHistoryPart.YearUpto() == 0)
-        firstHistoryPart = preparedList.filter((y) -> y.YearUpto() != 0)
-        lastHistoryFrom = lastHistoryPart.YearFrom()
-        lastHistoryUpto = lastHistoryPart.YearFrom()
-
-        return firstHistoryPart.concat [new SpanOfYears(lastHistoryFrom, lastHistoryUpto)]
-      preparedList
-
-    toListAccumulator = (agr, year) ->
-      if (agr.length == 0)
-        nextEmptyPartList = [new SpanOfYears(year, 0)]
-      else
-        firstPart = agr.filter((y) -> (y.YearUpto() != 0))
-        [..., lastPart] = agr
-        lastHistoryFrom = lastPart.YearFrom()
-        nextSpanPartList = nextListEnd(lastHistoryFrom, year)
-        firstPart.concat nextSpanPartList
-
-    history = @milestones.reduce(toListAccumulator, [])
-    makeListEnd(history)
+  yearsIntervalList: ->
+    @milestones.slice(0)
 
 module.exports = { MonthPeriod, SpanOfMonths, SpanOfYears, SeqOfYears }

@@ -24,7 +24,7 @@
       testChangeYears = [2011, 2012, 2014, 2016, 2017, 0];
       testYearArray = new Periods.SeqOfYears(testChangeYears);
       expsIntervalArray = [new Periods.SpanOfYears(2011, 2011), new Periods.SpanOfYears(2012, 2013), new Periods.SpanOfYears(2014, 2015), new Periods.SpanOfYears(2016, 2016), new Periods.SpanOfYears(2017, 2099)];
-      testIntervalArray = testYearArray.toYearsIntervalList();
+      testIntervalArray = testYearArray.yearsIntervalList();
       expsIntervalStrings = expsIntervalArray.toString();
       testIntervalStrings = testIntervalArray.toString();
       return true.should.equal(expsIntervalStrings === testIntervalStrings);

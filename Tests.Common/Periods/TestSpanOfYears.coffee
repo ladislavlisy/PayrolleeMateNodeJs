@@ -21,7 +21,7 @@ describe 'TestSpanOfYears', ->
         new Periods.SpanOfYears(2014, 2015),
         new Periods.SpanOfYears(2016, 2016),
         new Periods.SpanOfYears(2017, 2099)]
-      testIntervalArray = testYearArray.toYearsIntervalList()
+      testIntervalArray = testYearArray.yearsIntervalList()
       expsIntervalStrings = expsIntervalArray.toString()
       testIntervalStrings = testIntervalArray.toString()
       true.should.equal(expsIntervalStrings == testIntervalStrings)
