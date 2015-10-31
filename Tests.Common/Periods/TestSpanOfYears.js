@@ -27,7 +27,7 @@
       testIntervalArray = testYearArray.yearsIntervalList();
       expsIntervalStrings = expsIntervalArray.toString();
       testIntervalStrings = testIntervalArray.toString();
-      return true.should.equal(expsIntervalStrings === testIntervalStrings);
+      return expsIntervalStrings.should.equal(testIntervalStrings);
     });
     it('Should_Return_Interval_2011_For_Period_2011', function() {
       var expsInterval, testChangeYears, testInterval, testPeriod, testYearArray;

@@ -3,21 +3,26 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/karma.conf.js" />
+        <item url="file://$PROJECT_DIR$/PayrolleeMate.Common/Core.js" />
         <item url="file://$PROJECT_DIR$/Tests.Common/Periods/TestSpanOfYears.js" />
-        <item url="file://$PROJECT_DIR$/PayrolleeMate.Common/Periods.js" />
         <item url="file://$PROJECT_DIR$/Tests.Common/Periods/TestMonthPeriod.js" />
-        <item url="file://$PROJECT_DIR$/PayrolleeMate.Common/Periods/MonthPeriod.js" />
         <item url="file://$PROJECT_DIR$/Lib/Payrollee.Common.js" />
+        <item url="file://$PROJECT_DIR$/PayrolleeMate.Common/Periods.js" />
+        <item url="file://$PROJECT_DIR$/Tests.Common/Core/TestSymbolName.js" />
+        <item url="file://$PROJECT_DIR$/Tests.Common/Periods/TestMonthPeriod.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/PayrolleeMate.Common/Periods/MonthPeriod.js" />
+      <root url="file://$PROJECT_DIR$/PayrolleeMate.Common/Periods/MonthPeriod.js" />
       <root url="file://$PROJECT_DIR$/karma.conf.js" />
+      <root url="file://$PROJECT_DIR$/PayrolleeMate.Common/Core.js" />
       <root url="file://$PROJECT_DIR$/Tests.Common/Periods/TestSpanOfYears.js" />
       <root url="file://$PROJECT_DIR$/Tests.Common/Periods/TestMonthPeriod.js" />
-      <root url="file://$PROJECT_DIR$/PayrolleeMate.Common/Periods.js" />
-      <root url="file://$PROJECT_DIR$/PayrolleeMate.Common/Periods/MonthPeriod.js" />
       <root url="file://$PROJECT_DIR$/Lib/Payrollee.Common.js" />
+      <root url="file://$PROJECT_DIR$/PayrolleeMate.Common/Periods.js" />
+      <root url="file://$PROJECT_DIR$/Tests.Common/Core/TestSymbolName.js" />
+      <root url="file://$PROJECT_DIR$/Tests.Common/Periods/TestMonthPeriod.js" />
     </CLASSES>
     <SOURCES />
   </library>

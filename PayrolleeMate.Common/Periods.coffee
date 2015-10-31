@@ -193,8 +193,10 @@ class SeqOfYears
 
     sortedYears = years.slice(0)
     sortedYears.sort(SeqOfYears.transformZeroYear)
-    beginsYears = sortedYears.filter((x) -> x != 0)
-    finishYears = sortedYears[1..sortedYears.length]
+    beginsBound = Math.max(0, sortedYears.length-2)
+    beginsYears = sortedYears[0..beginsBound]
+    finishBound = Math.max(1, sortedYears.length-1)
+    finishYears = sortedYears[1..finishBound]
     sortedZiped = zip(beginsYears, finishYears)
     this.milestones = sortedZiped.map((x) -> SeqOfYears.transformYearsToSpans(x[0], x[1]));
 
